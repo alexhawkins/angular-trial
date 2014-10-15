@@ -9,6 +9,7 @@
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -56,13 +57,42 @@
                             <h4>Specifications</h4>
                             <blockquote>None Yet</blockquote>
                         </div>
+                        <!--REVIEWS TAB-->
                         <div class="panel" ng-show="panel.isSelected(3)">
                             <h4>Reviews</h4>
                             <blockquote ng-repeat="review in product.reviews">
                                 <b>Stars: {{review.stars}} - </b>
                                 {{review.body}}
-                                <cite><em>by: {{review.author}}</em></cite>
+                                <cite class="clearfix">
+                                    <em>&mdash; {{review.author}}</em>
+                                </cite>
                             </blockquote>
+                            <!-- FORM -->
+                            <form name="reviewForm">
+                                <!-- PREVIEW REVIEWS -->
+                                <h4>Submit a Review</h4>
+                                <blockquote>
+                                    <b>Stars: {{review.stars}} - </b>
+                                    {{review.body}}
+                                    <cite class="clearfix">
+                                        <em>&mdash; {{review.author}}</em>
+                                    </cite>
+                                </blockquote>
+                                <fieldset class="form-group">
+                                    <select class="form-control" ng-model="review.stars" ng-options="stars for stars in [5,4,3,2,1]" title="Stars">
+                                        <option value="">Rate the Product</option>
+                                    </select>
+                                </fieldset>
+                                <fieldset class="form-group">
+                                    <textarea class="form-control" ng-model="review.body" placeholder="Write a short review of the product..." title="Review"></textarea>
+                                </fieldset>
+                                <fieldset class="form-group">
+                                    <input type="email" class="form-control" ng-model="review.author" placeholder="jimmyDean@example.org" title="Email" />
+                                </fieldset>
+                                <fieldset class="form-group">
+                                    <input type="submit" class="btn btn-success pull-right" value="Submit Review" />
+                                </fieldset>
+                            </form>
 
                         </div>
                     </section>
