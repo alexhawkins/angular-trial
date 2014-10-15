@@ -2,12 +2,12 @@
 (function() {
     var app = angular.module('store', []);
 
-    //STORE CONTROLLER
+    /** STORE CONTROLLER */
     app.controller('StoreController', function() {
         this.products = stuff;
     });
 
-    //PANEL CONTROLLER
+    /** PANEL CONTROLLER */
     app.controller('PanelController', function() {
 
         /** @type {Number} keeps track of the tab number */
@@ -27,6 +27,16 @@
          */
         this.isSelected = function(checkTab) {
             return this.tab === checkTab;
+        };
+    });
+
+    /** REVIEW CONTROLLER */
+    app.controller('ReviewController', function() {
+        this.review = {};
+
+        this.addReview = function(product) {
+            product.reviews.push(this.review);
+            this.review = {};
         };
     });
 
@@ -76,6 +86,10 @@
                 stars: 4,
                 body: 'I love this product!',
                 author: 'doug@thomas.com'
+            }, {
+                stars: 1,
+                body: 'I hate this product!',
+                author: 'hauser@doogie.com'
             }]
         }
     ];
