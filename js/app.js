@@ -1,17 +1,15 @@
-
-
 //Wrap entire application in a closure. This is good practice in JavaScript.
 (function() {
     var app = angular.module('store', []);
 
     //STORE CONTROLLER
     app.controller('StoreController', function() {
-        this.products = gems;
+        this.products = stuff;
     });
 
     //PANEL CONTROLLER
     app.controller('PanelController', function() {
-       
+
         /** @type {Number} keeps track of the tab number */
         this.tab = 1;
 
@@ -32,10 +30,10 @@
         };
     });
 
-    var gems = [
+    var stuff = [
 
         {
-            name: 'Dodecahedron',
+            name: 'Nike Air Swoosh',
             price: 2.00,
             description: 'A really awesome bar of soap!',
             canPurchase: true,
@@ -43,9 +41,14 @@
             images: [{
                 full: 'img/images-2.jpeg',
                 thumb: 'img/images-2.jpeg'
+            }],
+            reviews: [{
+                stars: 5,
+                body: 'I love this product!',
+                author: 'joe@thomas.com'
             }]
         }, {
-            name: 'Pentagon',
+            name: 'Bilbo Baggins Dunk',
             price: 5.95,
             description: 'A really cool slide!',
             canPurchase: true,
@@ -53,9 +56,14 @@
             images: [{
                 full: 'img/images-3.jpeg',
                 thumb: 'img/images-2.jpeg'
+            }],
+            reviews: [{
+                stars: 3,
+                body: 'I love this product!',
+                author: 'alex@thomas.com'
             }]
         }, {
-            name: 'Retarded Dolls',
+            name: 'Retarded Doll Shoes',
             price: 22.95,
             description: 'A really retarded looking doll!',
             canPurchase: true,
@@ -63,6 +71,11 @@
             images: [{
                 full: 'img/images-2.jpeg',
                 thumb: 'img/images-2.jpeg'
+            }],
+            reviews: [{
+                stars: 4,
+                body: 'I love this product!',
+                author: 'doug@thomas.com'
             }]
         }
     ];
