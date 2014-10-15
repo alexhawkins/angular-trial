@@ -1,3 +1,5 @@
+
+
 //Wrap entire application in a closure. This is good practice in JavaScript.
 (function() {
     var app = angular.module('store', []);
@@ -9,17 +11,26 @@
 
     //PANEL CONTROLLER
     app.controller('PanelController', function() {
+       
+        /** @type {Number} keeps track of the tab number */
         this.tab = 1;
 
+        /**
+         * selects the tab that has been clicked
+         * @param  {Number} setTab
+         */
         this.selectTab = function(setTab) {
             this.tab = setTab;
         };
-
+        /**
+         * checks to see if the tab has been selected
+         * @param  {Number}  checkTab
+         * @return {Boolean}
+         */
         this.isSelected = function(checkTab) {
             return this.tab === checkTab;
         };
     });
-
 
     var gems = [
 
