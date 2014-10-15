@@ -64,11 +64,11 @@
                                 <b>Stars: {{review.stars}} - </b>
                                 {{review.body}}
                                 <cite class="clearfix">
-                                    <em>&mdash; {{review.author}}</em>
+                                    <em>&mdash; {{review.author}} on {{review.createdOn | date:'MM/dd/yyyy @ h:mma' | lowercase }}</em>
                                 </cite>
                             </blockquote>
                             <!-- REVIEW FORM -->
-                            <form name="reviewForm" ng-controller="ReviewController as reviewCtrl" ng-submit="reviewCtrl.addReview(product)">
+                            <form name="reviewForm" ng-controller="ReviewController as reviewCtrl" ng-submit="reviewForm.$valid && reviewCtrl.addReview(product)" novalidate>
                                 <!-- PREVIEW REVIEWS -->
                                 <h4>Submit a Review</h4>
                                 <blockquote>
@@ -79,16 +79,18 @@
                                     </cite>
                                 </blockquote>
                                 <fieldset class="form-group">
-                                    <select class="form-control" ng-model="reviewCtrl.review.stars" ng-options="stars for stars in [5,4,3,2,1]" title="Stars">
+                                    <select class="form-control" ng-model="reviewCtrl.review.stars" ng-options="stars for stars in [5,4,3,2,1]" title="Stars" required>
                                         <option value="">Rate the Product</option>
                                     </select>
                                 </fieldset>
                                 <fieldset class="form-group">
-                                    <textarea class="form-control" ng-model="reviewCtrl.review.body" placeholder="Write a short review of the product..." title="Review"></textarea>
+                                    <textarea class="form-control" ng-model="reviewCtrl.review.body" ng-minlength="20" placeholder="Write a short review of the product..." title="Review" required></textarea>
                                 </fieldset>
                                 <fieldset class="form-group">
-                                    <input type="email" class="form-control" ng-model="reviewCtrl.review.author" placeholder="jimmyDean@snausages.org" title="Email" />
+                                    <input type="email" class="form-control" ng-model="reviewCtrl.review.author" ng-minlength="5" placeholder="jimmyDean@snausages.org" title="Email" required/>
                                 </fieldset>
+                                <!-- DEBUGGING CODE -->
+                                <div> reviewForm is {{reviewForm.$valid}}</div>
                                 <fieldset class="form-group">
                                     <input type="submit" class="btn btn-success pull-right" value="Submit Review" />
                                 </fieldset>
