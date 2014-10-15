@@ -19,11 +19,22 @@
 </head>
 
 <body class="container">
-    <h1>Alex is age {{100 + 30}}</h1>
-    <p>{{"Hello" + " you"}}</p>
     <div class="container-fluid" ng-controller="StoreController as store">
-        <h3>{{store.product.name}}<em class="pull-right">${{store.product.price}}</em></h3>
-        <p>{{store.product.description}}</p>
+        <h1>{{store.products.length}} Products in Store</h1>
+        <h4>{{'1413339098' | date:'MM/dd/yyyy @ h:mma' | lowercase }}</h4>
+        <ul class="list-group">
+            <li class="list-group-item" ng-repeat="product in store.products | limitTo:10 | orderBy: '-price'">
+                <div ng-hide="product.soldOut">
+                    <h3>
+                        {{product.name}}
+                        <em class="pull-right">{{product.price | currency}}</em>
+                    </h3>
+                    <img  class="img-responsive" src="{{product.images[0].full}}"/>
+                    <p>{{product.description | limitTo: 100}}</p>
+                    <button type="button" class="btn btn-primary" ng-show="product.canPurchase">Add to Cart</button>
+                </div>
+            </li>
+        </ul>
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
