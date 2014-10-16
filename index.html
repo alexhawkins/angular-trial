@@ -27,12 +27,7 @@
             <li class="list-group-item" ng-repeat="product in store.products | limitTo:10 | orderBy: '-price'">
                 <!--INDIVIDUAL PRODUCT THAT IS STILL IN STOCK-->
                 <div ng-hide="product.soldOut">
-                    <h3>
-                        {{product.name}}
-                        <!--PRICE-->
-                        <em class="pull-right">{{product.price | currency}}</em>
-                    </h3>
-                    <!--PRODUCT IMAGE-->
+                    <product-title></product-title>
                     <img class="img-responsive" ng-src="{{product.images[0].full}}" />
                     <!--TABS SECTION-->
                     <section ng-controller="PanelController as panel">
@@ -50,8 +45,7 @@
                         </ul>
                         <!--TABS PANEL-->
                         <div class="panel" ng-show="panel.isSelected(1)">
-                            <h4>Description</h4>
-                            <blockquote>{{product.description | limitTo: 100}}</blockquote>
+                            <product-description></product-description>
                         </div>
                         <div class="panel" ng-show="panel.isSelected(2)">
                             <h4>Specifications</h4>
@@ -90,7 +84,7 @@
                                     <input type="email" class="form-control" ng-model="reviewCtrl.review.author" ng-minlength="5" placeholder="jimmyDean@snausages.org" title="Email" required/>
                                 </fieldset>
                                 <!-- DEBUGGING CODE -->
-                                <div> reviewForm is {{reviewForm.$valid}}</div>
+                                <div>reviewForm is {{reviewForm.$valid}}</div>
                                 <fieldset class="form-group">
                                     <input type="submit" class="btn btn-success pull-right" value="Submit Review" />
                                 </fieldset>

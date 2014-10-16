@@ -1,6 +1,11 @@
 //Wrap entire application in a closure. This is good practice in JavaScript.
+'use strict';
 (function() {
     var app = angular.module('store', []);
+
+    /**
+     * CONTROLLERS
+     */
 
     /** STORE CONTROLLER */
     app.controller('StoreController', function() {
@@ -40,6 +45,30 @@
             this.review = {};
         };
     });
+
+    /**
+     * DIRECTIVES
+     */
+
+    /** Product Title Directive */
+
+    app.directive('productTitle', function() {
+        return {
+            restrict: 'E', //type of directive E = element
+            templateUrl: 'product-title.html' //url of template
+        };
+    });
+
+    app.directive('productDescription', function() {
+        return {
+            restrict: 'E',
+            templateUrl: 'product-description.html'
+        };
+    });
+
+    /**
+     * DATABASE
+     */
 
     var stuff = [
 
