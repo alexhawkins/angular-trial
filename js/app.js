@@ -1,5 +1,5 @@
 //Wrap entire application in a closure. This is good practice in JavaScript.
-'use strict';
+//'use strict';
 (function() {
     var app = angular.module('store', []);
 
@@ -10,29 +10,6 @@
     /** STORE CONTROLLER */
     app.controller('StoreController', function() {
         this.products = stuff;
-    });
-
-    /** PANEL CONTROLLER */
-    app.controller('PanelController', function() {
-
-        /** @type {Number} keeps track of the tab number */
-        this.tab = 1;
-
-        /**
-         * selects the tab that has been clicked
-         * @param  {Number} setTab
-         */
-        this.selectTab = function(setTab) {
-            this.tab = setTab;
-        };
-        /**
-         * checks to see if the tab has been selected
-         * @param  {Number}  checkTab
-         * @return {Boolean}
-         */
-        this.isSelected = function(checkTab) {
-            return this.tab === checkTab;
-        };
     });
 
     /** REVIEW CONTROLLER */
@@ -49,6 +26,36 @@
     /**
      * DIRECTIVES
      */
+
+    /** Product Panels Element Directive w/ Panel Controller */
+    app.directive('productPanels', function() {
+        return {
+            restrict: 'E',
+            templateUrl: 'partials/product-panels.html',
+            controller: function() {
+                /** @type {Number} keeps track of the tab number */
+                this.tab = 1;
+                /**
+                 * selects the tab that has been clicked
+                 * @param  {Number} setTab
+                 */
+                this.selectTab = function(setTab) {
+                    this.tab = setTab;
+                };
+                /**
+                 * checks to see if the tab has been selected
+                 * @param  {Number}  checkTab
+                 * @return {Boolean}
+                 */
+                this.isSelected = function(checkTab) {
+                    return this.tab === checkTab;
+                };
+
+            },
+            /** @type {String} create alias for our Controller above to use in html */
+            controllerAs: 'panel'
+        };
+    });
 
     /** Product Title Element Directive */
     app.directive('productTitle', function() {

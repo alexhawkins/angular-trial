@@ -29,35 +29,8 @@
                 <div ng-hide="product.soldOut">
                     <product-title></product-title>
                     <img class="img-responsive" ng-src="{{product.images[0].full}}" />
-                    <!--TABS SECTION-->
-                    <section ng-controller="PanelController as panel">
-                        <!--TABS CONTROL-->
-                        <ul class="nav nav-pills nav-justified">
-                            <li ng-class="{ active:panel.isSelected(1) }">
-                                <a href ng-click="panel.selectTab(1)">Description</a>
-                            </li>
-                            <li ng-class="{ active:panel.isSelected(2) }">
-                                <a href ng-click="panel.selectTab(2)">Specifications</a>
-                            </li>
-                            <li ng-class="{ active:panel.isSelected(3) }">
-                                <a href ng-click="panel.selectTab(3)">Reviews</a>
-                            </li>
-                        </ul>
-                        <!--TABS PANEL-->
-
-                        <!--DESCRIPTION TAB-->
-                        <div class="panel" ng-show="panel.isSelected(1)">
-                            <product-description></product-description>
-                        </div>
-                        <!-- SPECS TAB -->
-                        <div product-specs class="panel" ng-show="panel.isSelected(2)">
-                        </div>
-                        <!--REVIEWS TAB-->
-                        <div class="panel" ng-show="panel.isSelected(3)">
-                            <product-reviews></product-reviews>
-                        </div>
-                    </section>
-
+                    <!--PRODUCT PANELS/TABS SECTION-->
+                    <product-panels></product-panels>
                 </div>
                 <!--ADD TO CART BUTTON-->
                 <button type="button" class="btn btn-lg btn-default" ng-show="product.canPurchase">Add to Cart</button>
