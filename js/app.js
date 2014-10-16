@@ -50,34 +50,54 @@
      * DIRECTIVES
      */
 
-    /** Product Title Directive */
-
+    /** Product Title Element Directive */
     app.directive('productTitle', function() {
         return {
             restrict: 'E', //type of directive E = element
-            templateUrl: 'product-title.html' //url of template
+            templateUrl: 'partials/product-title.html' //url of template
         };
     });
 
+    /** Product Description Element Directive  */
     app.directive('productDescription', function() {
         return {
             restrict: 'E',
-            templateUrl: 'product-description.html'
+            templateUrl: 'partials/product-description.html'
+        };
+    });
+
+    /** Product Reviews Element Directive  */
+    app.directive('productReviews', function() {
+        return {
+            restrict: 'E',
+            templateUrl: 'partials/product-reviews.html'
+        };
+    });
+
+    /** Product Specs Attribute Directive  */
+    app.directive('productSpecs', function() {
+        return {
+            restrict: 'A',
+            templateUrl: 'partials/product-specs.html'
         };
     });
 
     /**
-     * DATABASE
+     * MOCK DATABASE
      */
 
     var stuff = [
 
         {
             name: 'Nike Air Swoosh',
-            price: 2.00,
+            price: 110.50,
             description: 'A really awesome bar of soap!',
             canPurchase: true,
             soldOut: false,
+            shine: 8,
+            rarity: 7,
+            color: '#CCC',
+            faces: 14,
             images: [{
                 full: 'img/images-2.jpeg',
                 thumb: 'img/images-2.jpeg'
@@ -89,10 +109,14 @@
             }]
         }, {
             name: 'Bilbo Baggins Dunk',
-            price: 5.95,
+            price: 55.95,
             description: 'A really cool slide!',
             canPurchase: true,
             soldOut: false,
+            shine: 9,
+            rarity: 6,
+            color: '#EEE',
+            faces: 12,
             images: [{
                 full: 'img/images-3.jpeg',
                 thumb: 'img/images-2.jpeg'
@@ -104,10 +128,14 @@
             }]
         }, {
             name: 'Retarded Doll Shoes',
-            price: 22.95,
+            price: 72.95,
             description: 'A really retarded looking doll!',
             canPurchase: true,
             soldOut: false,
+            shine: 70,
+            rarity: 2,
+            color: '#000',
+            faces: 6,
             images: [{
                 full: 'img/images-2.jpeg',
                 thumb: 'img/images-2.jpeg'
